@@ -4,7 +4,15 @@
 
 
 <mapper namespace="Member">
+    <insert id="memberSave" parameterType="memberDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into member_table1 (memberEmail, memberPassword, memberName, memberMobile, fileAttached)
+        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberMobile},  #{fileAttached})
+    </insert>
 
+    <insert id="fileSave" parameterType="memberDTO">
+        insert into member_file_table1 (originalFileName, storedFileName, memberId)
+        values (#{originalFileName}, #{storedFileName}, #{id})
+    </insert>
 </mapper>
 
 
