@@ -13,6 +13,11 @@
         insert into member_file_table1 (originalFileName, storedFileName, memberId)
         values (#{originalFileName}, #{storedFileName}, #{id})
     </insert>
+
+    <select id="duplicateCheck" parameterType="String" resultType="String">
+        select memberEmail from member_table1 where memberEmail = #{memberEmail}
+    </select>
+
 </mapper>
 
 

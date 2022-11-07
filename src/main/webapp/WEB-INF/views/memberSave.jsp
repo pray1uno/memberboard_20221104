@@ -9,26 +9,103 @@
 <html>
 <head>
     <title>memberSave</title>
+    <script src="/resources/js/jquery.js"></script>
 </head>
 <body>
 <div>
     <form action="/member/save" method="post" name="saveForm" enctype="multipart/form-data">
-        이메일
-        <input type="text" name="memberEmail"> <br>
-        비밀번호
-        <input type="text" name="memberPassword"> <br>
-        이름
-        <input type="text" name="memberName"> <br>
-        전화번호
-        <input type="text" name="memberMobile"> <br>
+        이메일 <br>
+        <input type="text" name="memberEmail" placeholder="이메일" onblur="duplicateCheck()" id="inputEmail">
+        <span id="emailCheck"></span><br>
+        <span id="inputEmailCheck"></span>
+        비밀번호 <br>
+        <input type="text" name="memberPassword" placeholder="비밀번호">
+        <span id="passwordCheck"></span><br>
+        이름 <br>
+        <input type="text" name="memberName" placeholder="이름">
+        <span id="nameCheck"></span><br>
+        전화번호 <br>
+        <input type="text" name="memberMobile" placeholder="전화번호">
+        <span id="mobileCheck"></span><br>
         <input type="file" name="memberFileName"> <br>
         <input type="button" value="회원가입" onclick="save()">
     </form>
 </div>
 </body>
 <script>
+
+    const duplicateCheck = () => {
+        const email = document.getElementById("inputEmail").value;
+        const checked = document.getElementById("emailCheck");
+
+        if (email.length > 0) {
+            $.ajax({
+                type: "post",
+                url: "/member/duplicateCheck",
+                dataType: "text",
+                data: {
+                    inputEmail: email
+                },
+                success: function (result) {
+                    if (result == "OK") {
+                        checked.innerHTML = "사용할 수 있는 이메일입니다.";
+                        checked.style.color = "green";
+                    } else if (result == "NO") {
+                        checked.innerHTML = "이미 사용중인 이메일입니다."
+                        checked.style.color = "red";
+                    }
+                },
+                error: function () {
+                    console.log("실패");
+                }
+            });
+        } else {
+            checked.innerHTML = "";
+        }
+
+    }
+
     const save = () => {
+        const emailCheck = document.getElementById("inputEmailCheck");
+        const passwordCheck = document.getElementById("passwordCheck");
+        const nameCheck = document.getElementById("nameCheck");
+        const mobileCheck = document.getElementById("mobileCheck");
+
+        if (document.saveForm.memberEmail.value == "") {
+            emailCheck.innerHTML = "이메일을 입력해 주세요.";
+            emailCheck.style.color = "red";
+            return false;
+        } else {
+            emailCheck.innerHTML = "";
+
+        }
+
+        if (document.saveForm.memberPassword.value == "") {
+            passwordCheck.innerHTML = "비밀번호를 입력해 주세요.";
+            passwordCheck.style.color = "red";
+            return false;
+        } else {
+            passwordCheck.innerHTML = "";
+        }
+
+        if (document.saveForm.memberName.value == "") {
+            nameCheck.innerHTML = "이름을 입력해 주세요.";
+            nameCheck.style.color = "red";
+            return false;
+        } else {
+            nameCheck.innerHTML = "";
+        }
+
+        if (document.saveForm.memberMobile.value == "") {
+            mobileCheck.innerHTML = "전화번호를 입력해 주세요.";
+            mobileCheck.style.color = "red";
+            return false;
+        } else {
+            mobileCheck.innerHTML = "";
+        }
+
         document.saveForm.submit();
+
     }
 </script>
 </html>

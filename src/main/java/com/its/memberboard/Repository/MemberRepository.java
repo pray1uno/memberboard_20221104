@@ -17,4 +17,8 @@ public class MemberRepository {
     public void fileSave(MemberDTO memberDTO) {
         sql.insert("Member.fileSave", memberDTO);
      }
+
+    public String duplicate(String memberEmail) {
+        return sql.selectOne("Member.duplicateCheck", memberEmail);
+    }
 }

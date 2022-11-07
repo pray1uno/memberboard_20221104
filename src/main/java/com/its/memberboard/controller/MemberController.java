@@ -5,9 +5,7 @@ import com.its.memberboard.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -25,5 +23,11 @@ public class MemberController {
     public String postSave(@ModelAttribute MemberDTO memberDTO) throws IOException {
         memberService.save(memberDTO);
         return "index";
+    }
+
+    @PostMapping("/member/duplicateCheck")
+    public @ResponseBody String duplicateCheck(@RequestParam("inputEmail") String memberEmail) {
+        String checkResult = memberService.duplicate(memberEmail);
+        return checkResult;
     }
 }

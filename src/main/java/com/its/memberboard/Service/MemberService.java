@@ -33,4 +33,13 @@ public class MemberService {
             memberRepository.save(memberDTO);
         }
     }
+
+    public String duplicate(String memberEmail) {
+        String checkResult = memberRepository.duplicate(memberEmail);
+        if (checkResult == null) {
+            return "OK";
+        } else {
+            return "NO";
+        }
+    }
 }
