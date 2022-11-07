@@ -56,5 +56,27 @@ public class MemberController {
         return "index";
     }
 
+    @GetMapping("page")
+    public String myPage() {
+        return "memberMyPage";
+    }
 
+    @GetMapping("/member/myPage")
+    public String myPage(Model model, HttpSession session) {
+        String loginEmail = (String) session.getAttribute("loginEmail");
+        MemberDTO result = memberService.myUpdate(loginEmail);
+        model.addAttribute("myPage", result);
+        return "memberMyUpdate";
+    }
+
+    @PostMapping("/member/myUpdate")
+    public String updateComplete(@ModelAttribute MemberDTO memberDTO) {
+        boolean updateResult = memberService.updateComplete(memberDTO);
+
+        if (updateResult) {
+            return "redirect:/page";
+        } else {
+            return "index";
+        }
+    }
 }

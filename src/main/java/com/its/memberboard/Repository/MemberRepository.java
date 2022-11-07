@@ -25,4 +25,12 @@ public class MemberRepository {
     public MemberDTO login(MemberDTO memberDTO) {
         return sql.selectOne("Member.login", memberDTO);
     }
+
+    public MemberDTO myUpdate(String loginEmail) {
+        return sql.selectOne("Member.myPage", loginEmail);
+    }
+
+    public int updateComplete(MemberDTO memberDTO) {
+        return sql.update("Member.updateComplete", memberDTO);
+    }
 }

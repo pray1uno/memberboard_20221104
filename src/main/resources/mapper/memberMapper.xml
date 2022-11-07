@@ -15,12 +15,31 @@
     </insert>
 
     <select id="duplicateCheck" parameterType="String" resultType="String">
-        select memberEmail from member_table1 where memberEmail = #{memberEmail}
+        select memberEmail
+        from member_table1
+        where memberEmail = #{memberEmail}
     </select>
 
     <select id="login" resultType="memberDTO">
-        select * from member_table1 where memberEmail = #{memberEmail} and memberPassword = #{memberPassword}
+        select *
+        from member_table1
+        where memberEmail = #{memberEmail}
+          and memberPassword = #{memberPassword}
     </select>
+
+    <select id="myPage" resultType="memberDTO">
+        select *
+        from member_table1
+        where memberEmail = #{memberEmail}
+    </select>
+
+    <update id="updateComplete" parameterType="memberDTO">
+        update member_table1
+        set memberPassword = #{memberPassword},
+            memberName     = #{memberName},
+            memberMobile   = #{memberMobile}
+        where id = #{id}
+    </update>
 
 </mapper>
 
