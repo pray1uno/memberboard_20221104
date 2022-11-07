@@ -19,20 +19,55 @@
         <span id="emailCheck"></span><br>
         <span id="inputEmailCheck"></span>
         비밀번호 <br>
-        <input type="text" name="memberPassword" placeholder="비밀번호">
+        <input type="text" name="memberPassword" placeholder="비밀번호" onblur="expCheckPW()" id="inputPassword">
         <span id="passwordCheck"></span><br>
+        <span id="passwordExp"></span>
         이름 <br>
         <input type="text" name="memberName" placeholder="이름">
         <span id="nameCheck"></span><br>
         전화번호 <br>
-        <input type="text" name="memberMobile" placeholder="전화번호">
+        <input type="text" name="memberMobile" placeholder="전화번호" onblur="expCheckMobile()" id="inputMobile">
         <span id="mobileCheck"></span><br>
+        <span id="mobileExp"></span>
         <input type="file" name="memberFileName"> <br>
         <input type="button" value="회원가입" onclick="save()">
     </form>
 </div>
 </body>
 <script>
+
+    const expCheckMobile = () => {
+        const checkExpMobile = /^\d{3}-\d{4}-\d{4}$/;
+
+        const inputMobile = document.getElementById("inputMobile").value;
+        const expMobile = document.getElementById("mobileExp");
+
+        if (!inputMobile.match(checkExpMobile)) {
+            expMobile.innerHTML = "'-'까지 모두 입력해 주세요.";
+            expMobile.style.color = "red";
+            return false;
+        } else {
+            expMobile.innerHTML = "";
+        }
+
+    }
+
+    const expCheckPW = () => {
+        const checkExpPW = /^(?=.*[a-z])[a-z \d -_!#]/;
+
+        const inputExpPW = document.getElementById("inputPassword").value;
+        const expPassword = document.getElementById("passwordExp");
+
+        if (inputExpPW.match(checkExpPW)) {
+            expPassword.innerHTML = "사용할 수 있는 비밀번호 입니다.";
+            expPassword.style.color = "green";
+            return false;
+        } else {
+            expPassword.innerHTML = "영문 소문자는 반드시 입력해야 합니다.";
+            expPassword.style.color = "red";
+        }
+
+    }
 
     const duplicateCheck = () => {
         const email = document.getElementById("inputEmail").value;
