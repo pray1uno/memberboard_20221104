@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -30,4 +31,30 @@ public class MemberController {
         String checkResult = memberService.duplicate(memberEmail);
         return checkResult;
     }
+
+    @GetMapping("/member/login")
+    public String login() {
+        return "memberLogin";
+    }
+
+    @PostMapping("/member/login")
+    public String postLogin(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
+        boolean result = memberService.login(memberDTO);
+
+        if (result) {
+            model.addAttribute("login", memberDTO.getMemberEmail());
+            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+            return "boardList";
+        } else {
+            return "memberLogin";
+        }
+    }
+
+    @GetMapping("/member/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
+
+
 }

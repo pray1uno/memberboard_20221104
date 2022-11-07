@@ -6,7 +6,7 @@
 <mapper namespace="Member">
     <insert id="memberSave" parameterType="memberDTO" useGeneratedKeys="true" keyProperty="id">
         insert into member_table1 (memberEmail, memberPassword, memberName, memberMobile, fileAttached)
-        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberMobile},  #{fileAttached})
+        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberMobile}, #{fileAttached})
     </insert>
 
     <insert id="fileSave" parameterType="memberDTO">
@@ -16,6 +16,10 @@
 
     <select id="duplicateCheck" parameterType="String" resultType="String">
         select memberEmail from member_table1 where memberEmail = #{memberEmail}
+    </select>
+
+    <select id="login" resultType="memberDTO">
+        select * from member_table1 where memberEmail = #{memberEmail} and memberPassword = #{memberPassword}
     </select>
 
 </mapper>

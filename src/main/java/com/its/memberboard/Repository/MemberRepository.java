@@ -21,4 +21,8 @@ public class MemberRepository {
     public String duplicate(String memberEmail) {
         return sql.selectOne("Member.duplicateCheck", memberEmail);
     }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+        return sql.selectOne("Member.login", memberDTO);
+    }
 }
