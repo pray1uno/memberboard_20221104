@@ -46,6 +46,7 @@ public class BoardController {
     @GetMapping("/board")
     public String findById(@RequestParam("id") Long id, Model model,
                            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        boardService.hits(id);
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("findById", boardDTO);
         model.addAttribute("page", page);

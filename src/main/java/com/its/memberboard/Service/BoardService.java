@@ -76,4 +76,7 @@ public class BoardService {
     }
 
 
+    public void hits(Long id) {
+        boardRepository.hits(id);
+    }
 }

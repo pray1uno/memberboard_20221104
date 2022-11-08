@@ -46,4 +46,7 @@ public class BoardRepository {
     }
 
 
+    public void hits(Long id) {
+        sql.update("Board.hitsPlus", id);
+    }
 }

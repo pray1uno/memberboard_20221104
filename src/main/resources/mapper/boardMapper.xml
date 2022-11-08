@@ -15,25 +15,41 @@
     </insert>
 
     <select id="boardList" resultType="boardDTO">
-        select * from board_table1 order by id desc
+        select *
+        from board_table1
+        order by id desc
     </select>
 
     <select id="findById" parameterType="Long" resultType="boardDTO">
-        select * from board_table1 where id = #{id}
-        </select>
+        select *
+        from board_table1
+        where id = #{id}
+    </select>
 
     <select id="pagingList" parameterType="java.util.HashMap" resultType="boardDTO">
-        select * from board_table1 order by id desc limit #{start}, #{limit}
+        select *
+        from board_table1
+        order by id desc limit #{start}, #{limit}
     </select>
 
     <select id="boardCount" resultType="Integer">
-        select count(id) from board_table1
+        select count(id)
+        from board_table1
     </select>
 
     <select id="findByIdFile" parameterType="Long" resultType="boardDTO">
-        select * from board_table1 b, board_file_table1 bf where b.id = bf.boardId and b.id = #{id}
+        select *
+        from board_table1 b,
+             board_file_table1 bf
+        where b.id = bf.boardId
+          and b.id = #{id}
     </select>
 
+    <update id="hitsPlus" parameterType="Long">
+        update board_table1
+        set boardHits = boardHits + 1
+        where id = #{id}
+    </update>
 </mapper>
 
 
