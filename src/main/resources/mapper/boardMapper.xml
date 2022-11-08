@@ -4,6 +4,19 @@
 
 
 <mapper namespace="Board">
+    <insert id="boardInsert" parameterType="boardDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into board_table1 (boardTitle, boardWriter, boardContents, fileAttached)
+        values (#{boardTitle}, #{boardWriter}, #{boardContents}, #{fileAttached})
+    </insert>
+
+    <insert id="boardFile" parameterType="boardDTO">
+        insert into board_file_table1 (originalFilneName, storedFileName, boardId)
+        values (#{originalFileName}, #{storedFileName}, #{id})
+    </insert>
+
+    <select id="boardList" resultType="boardDTO">
+        select * from board_table1 order by id desc
+    </select>
 
 </mapper>
 
