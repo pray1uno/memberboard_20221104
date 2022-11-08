@@ -21,7 +21,7 @@ public class MemberService {
             String storedFileName = System.currentTimeMillis() + "_" + originalFileName;
             memberDTO.setOriginalFileName(originalFileName);
             memberDTO.setStoredFileName(storedFileName);
-            String saveFile = "D:\\spring_img\\" + storedFileName;
+            String saveFile = "D:\\spring_board_img\\" + storedFileName;
             memberFileName.transferTo(new File(saveFile));
             memberDTO.setFileAttached(1);
 

@@ -33,6 +33,9 @@
         <input type="button" value="회원가입" onclick="save()">
     </form>
 </div>
+<div>
+    <a href="/">홈으로 가기</a>
+</div>
 </body>
 <script>
 

@@ -14,6 +14,9 @@
 <div>
     <button onclick="myUpdate()">내 정보 수정</button>
 </div>
+<div>
+    <a href="/">홈으로 가기</a>
+</div>
 </body>
 <script>
     const myUpdate = () => {

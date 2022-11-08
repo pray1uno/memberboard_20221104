@@ -18,6 +18,9 @@
         <input type="button" value="로그인" onclick="login()">
     </form>
 </div>
+<div>
+    <a href="/">홈으로 가기</a>
+</div>
 </body>
 <script>
     const login = () => {

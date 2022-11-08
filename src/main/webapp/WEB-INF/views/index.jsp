@@ -25,7 +25,7 @@
     }
 
     const boardList = () => {
-        location.href = "/board/list";
+        location.href = "/board/paging";
     }
 </script>
 </html>

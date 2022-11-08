@@ -44,7 +44,7 @@ public class MemberController {
         if (result) {
             model.addAttribute("login", memberDTO.getMemberEmail());
             session.setAttribute("loginEmail", memberDTO.getMemberEmail());
-            return "boardList";
+            return "redirect:/board/listUp";
         } else {
             return "memberLogin";
         }
