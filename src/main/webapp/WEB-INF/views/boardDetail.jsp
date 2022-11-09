@@ -14,33 +14,34 @@
     <script src="/resources/js/jquery.js"></script>
 </head>
 <body>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div>
     <table>
         <tr>
             <th>번호</th>
-            <td>${findById.id}</td>
+            <td>${boardList.id}</td>
         </tr>
         <tr>
             <th>제목</th>
-            <td>${findById.boardTitle}</td>
+            <td>${boardList.boardTitle}</td>
         </tr>
         <tr>
             <th>내용</th>
-            <td>${findById.boardContents}</td>
+            <td>${boardList.boardContents}</td>
         </tr>
         <tr>
             <th>작성시간</th>
-            <td>${findById.boardCreatedDate}</td>
+            <td>${boardList.boardCreatedDate}</td>
         </tr>
         <tr>
             <th>조회수</th>
-            <td>${findById.boardHits}</td>
+            <td>${boardList.boardHits}</td>
         </tr>
-        <c:if test="${findById.storedFileName != null}">
+        <c:if test="${boardList.storedFileName != null}">
             <tr>
                 <th>첨부파일</th>
                 <td>
-                    <img src="${pageContext.request.contextPath}/upload/${findById.storedFileName}" alt=""
+                    <img src="${pageContext.request.contextPath}/upload/${boardList.storedFileName}" alt=""
                     width="200" height="200">
                 </td>
             </tr>

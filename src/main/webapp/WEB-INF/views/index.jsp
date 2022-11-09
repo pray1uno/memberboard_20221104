@@ -11,6 +11,7 @@
     <title>Index</title>
 </head>
 <body>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <button onclick="memberSave()">회원가입</button>
 <button onclick="memberLogin()">로그인</button>
 <button onclick="boardList()">게시글 목록</button>

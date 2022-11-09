@@ -48,7 +48,7 @@ public class BoardController {
                            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
         boardService.hits(id);
         BoardDTO boardDTO = boardService.findById(id);
-        model.addAttribute("findById", boardDTO);
+        model.addAttribute("boardList", boardDTO);
         model.addAttribute("page", page);
         return "boardDetail";
     }
@@ -60,6 +60,15 @@ public class BoardController {
         PageDTO pageDTO = boardService.pagingParam(page);
         model.addAttribute("boardList", pagingList);
         model.addAttribute("paging", pageDTO);
+        return "boardPaging";
+    }
+
+    @GetMapping("/board/search")
+    public String search(@RequestParam("type") String type,
+                         @RequestParam("q") String q,
+                         Model model) {
+        List<BoardDTO> searchResult = boardService.search(type, q);
+        model.addAttribute("boardList", searchResult);
         return "boardPaging";
     }
 

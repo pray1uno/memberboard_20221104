@@ -11,6 +11,7 @@
     <title>memberLogin</title>
 </head>
 <body>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div>
     <form action="/member/login" method="post" name="loginForm">
         <input type="text" name="memberEmail" placeholder="이메일"> <br>

@@ -12,6 +12,7 @@
     <script src="/resources/js/jquery.js"></script>
 </head>
 <body>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div>
     <form action="/member/save" method="post" name="saveForm" enctype="multipart/form-data">
         이메일 <br>

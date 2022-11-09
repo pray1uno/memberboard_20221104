@@ -11,6 +11,7 @@
     <title>boardWrite</title>
 </head>
 <body>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div>
     <form action="/board/newBoardWrite" method="post" name="writeForm" enctype="multipart/form-data">
         <input type="text" name="boardTitle" placeholder="제목"> <br>

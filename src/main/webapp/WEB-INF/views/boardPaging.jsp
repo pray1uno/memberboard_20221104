@@ -13,6 +13,7 @@
     <title>boardPaging</title>
 </head>
 <body>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div>
     <button onclick="logout()">로그아웃</button>
     <button onclick="myPage()">마이페이지</button>

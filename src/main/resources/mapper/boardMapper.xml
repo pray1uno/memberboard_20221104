@@ -50,6 +50,13 @@
         set boardHits = boardHits + 1
         where id = #{id}
     </update>
+
+    <select id="search" parameterType="java.util.HashMap" resultType="boardDTO">
+        select *
+        from board_table1
+        where ${type} like concat('%', #{q}, '%')
+        order by id desc
+    </select>
 </mapper>
 
 

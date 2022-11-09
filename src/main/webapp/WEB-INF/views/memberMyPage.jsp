@@ -11,6 +11,7 @@
     <title>MyPage</title>
 </head>
 <body>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div>
     <button onclick="myUpdate()">내 정보 수정</button>
 </div>
