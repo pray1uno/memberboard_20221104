@@ -26,6 +26,10 @@
             <td>${boardList.boardTitle}</td>
         </tr>
         <tr>
+            <th>작성자</th>
+            <td>${boardList.boardWriter}</td>
+        </tr>
+        <tr>
             <th>내용</th>
             <td>${boardList.boardContents}</td>
         </tr>
@@ -65,7 +69,7 @@
 </body>
 <script>
     const boardUpdate = () => {
-        location.href = "/board/update";
+        location.href = "/board/update?id=" + '${boardList.id}';
     }
 
     const boardDelete = () => {

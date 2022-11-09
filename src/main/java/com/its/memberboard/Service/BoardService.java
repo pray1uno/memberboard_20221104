@@ -93,4 +93,16 @@ public class BoardService {
     }
 
 
+    public BoardDTO boardUpdate(Long id) {
+        return boardRepository.boardUpdate(id);
+    }
+
+    public boolean update(BoardDTO boardDTO) {
+        int result = boardRepository.update(boardDTO);
+        if (result > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -73,13 +73,28 @@ public class BoardController {
         return "boardPaging";
     }
 
-
     @GetMapping("/board/delete")
     public String boardDelete(@RequestParam("id") Long id,
                               Model model) {
         int deleteResult = boardService.boardDelete(id);
         model.addAttribute("deleteResult", deleteResult);
         return "redirect:/board/paging";
+    }
+
+    @GetMapping("/board/update")
+    public String boardUpdate(@RequestParam("id") Long id, Model model) {
+        BoardDTO result = boardService.boardUpdate(id);
+        model.addAttribute("updateResult", result);
+        return "boardUpdate";
+    }
+
+    @PostMapping("/board/update")
+    public String postUpdate(@ModelAttribute BoardDTO boardDTO,
+                             Model model) {
+        boardService.update(boardDTO);
+        BoardDTO DTO = boardService.findById(boardDTO.getId());
+        model.addAttribute("boardList", DTO);
+        return "boardDetail";
     }
 
 }

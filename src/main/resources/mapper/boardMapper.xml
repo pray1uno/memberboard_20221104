@@ -64,6 +64,18 @@
         where id = #{id}
     </delete>
 
+    <select id="boardUpdate" resultType="boardDTO">
+        select *
+        from board_table1
+        where id = #{id}
+    </select>
+
+    <update id="update" parameterType="boardDTO">
+        update board_table1
+        set boardTitle    = #{boardTitle},
+            boardContents = #{boardContents}
+        where id = #{id}
+    </update>
 </mapper>
 
 

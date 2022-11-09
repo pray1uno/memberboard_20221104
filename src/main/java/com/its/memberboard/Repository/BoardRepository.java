@@ -60,4 +60,12 @@ public class BoardRepository {
     }
 
 
+    public BoardDTO boardUpdate(Long id) {
+        return sql.selectOne("Board.boardUpdate", id);
+
+    }
+
+    public int update(BoardDTO boardDTO) {
+        return sql.update("Board.update", boardDTO);
+    }
 }
