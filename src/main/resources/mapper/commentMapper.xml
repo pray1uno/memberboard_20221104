@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Comment">
+    <insert id="save" parameterType="commentDTO">
+        insert into comment_table1 (boardId, commentWriter, commentContents)
+        values (#{boardId}, #{commentWriter}, #{commentContents})
+    </insert>
+
+    <select id="listLoad" parameterType="Long" resultType="commentDTO">
+        select *
+        from comment_table1
+        where boardId = #{boardId}
+        order by id desc
+    </select>
+</mapper>
