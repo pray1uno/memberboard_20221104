@@ -41,6 +41,17 @@
         where id = #{id}
     </update>
 
+    <select id="memberList" resultType="memberDTO">
+        select *
+        from member_table1
+        order by id asc
+    </select>
+
+    <delete id="memberDelete" parameterType="Long">
+        delete
+        from member_table1
+        where id = #{id}
+    </delete>
 </mapper>
 
 

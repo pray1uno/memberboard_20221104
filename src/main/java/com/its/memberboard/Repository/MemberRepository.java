@@ -35,4 +35,12 @@ public class MemberRepository {
     public int updateComplete(MemberDTO memberDTO) {
         return sql.update("Member.updateComplete", memberDTO);
     }
+
+    public List<MemberDTO> memberList() {
+        return sql.selectList("Member.memberList");
+    }
+
+    public int delete(Long id) {
+        return sql.delete("Member.memberDelete", id);
+    }
 }

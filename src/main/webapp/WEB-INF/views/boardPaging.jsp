@@ -21,6 +21,7 @@
 </div>
 <div>
 <table>
+    <h2>${sessionScope.loginEmail} 님</h2>
     <tr>
         <th>번호</th>
         <th>제목</th>

@@ -46,7 +46,7 @@
                 <th>첨부파일</th>
                 <td>
                     <img src="${pageContext.request.contextPath}/upload/${boardList.storedFileName}" alt=""
-                    width="200" height="200">
+                         width="200" height="200">
                 </td>
             </tr>
         </c:if>
@@ -60,6 +60,16 @@
                 </td>
             </tr>
         </c:if>
+
+        <c:if test="${sessionScope.loginEmail == 'admin'}">
+            <tr>
+                <th>삭제</th>
+                <td>
+                    <button onclick="adminDelete()">삭제</button>
+                </td>
+            </tr>
+        </c:if>
+
     </table>
 </div>
 <div>
@@ -74,6 +84,11 @@
 
     const boardDelete = () => {
         location.href = "/board/delete?id=" + '${boardList.id}';
+    }
+
+    const adminDelete = () => {
+        location.href = "/board/delete?id=" + '${boardList.id}';
+
     }
 </script>
 </html>

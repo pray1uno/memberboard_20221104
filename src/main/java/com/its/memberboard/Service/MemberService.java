@@ -70,4 +70,12 @@ public class MemberService {
             return false;
         }
     }
+
+    public List<MemberDTO> memberList() {
+        return memberRepository.memberList();
+    }
+
+    public int delete(Long id) {
+        return memberRepository.delete(id);
+    }
 }

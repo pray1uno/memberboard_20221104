@@ -80,4 +80,25 @@ public class MemberController {
             return "index";
         }
     }
+
+    @GetMapping("/member/admin")
+    public String admin() {
+        return "admin";
+    }
+
+    @GetMapping("/member/memberList")
+    public String memberList(Model model) {
+        List<MemberDTO> listResult = memberService.memberList();
+        model.addAttribute("memberList", listResult);
+        return "memberList";
+    }
+
+    @GetMapping("/member/delete")
+    public String memberDelete(@RequestParam("id") Long id,
+                               Model model) {
+        int result = memberService.delete(id);
+        model.addAttribute("deleteResult", result);
+        return "redirect:/member/memberList";
+    }
+
 }
