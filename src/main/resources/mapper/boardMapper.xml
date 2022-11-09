@@ -57,6 +57,13 @@
         where ${type} like concat('%', #{q}, '%')
         order by id desc
     </select>
+
+    <delete id="delete" parameterType="Long">
+        delete
+        from board_table1
+        where id = #{id}
+    </delete>
+
 </mapper>
 
 

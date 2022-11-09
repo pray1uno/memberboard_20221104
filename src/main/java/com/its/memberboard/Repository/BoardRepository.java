@@ -1,6 +1,7 @@
 package com.its.memberboard.Repository;
 
 import com.its.memberboard.DTO.BoardDTO;
+import com.its.memberboard.DTO.MemberDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -53,4 +54,10 @@ public class BoardRepository {
     public List<BoardDTO> search(Map<String, String> searchParam) {
         return sql.selectList("Board.search", searchParam);
     }
+
+    public int boardDelete(Long id) {
+        return sql.delete("Board.delete", id);
+    }
+
+
 }

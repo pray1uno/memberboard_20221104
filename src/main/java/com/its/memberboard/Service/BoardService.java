@@ -1,6 +1,7 @@
 package com.its.memberboard.Service;
 
 import com.its.memberboard.DTO.BoardDTO;
+import com.its.memberboard.DTO.MemberDTO;
 import com.its.memberboard.DTO.PageDTO;
 import com.its.memberboard.Repository.BoardRepository;
 import com.its.memberboard.commons.PagingConst;
@@ -86,5 +87,10 @@ public class BoardService {
         List<BoardDTO> searchList = boardRepository.search(searchParam);
         return searchList;
     }
+
+    public int boardDelete(Long id) {
+        return boardRepository.boardDelete(id);
+    }
+
 
 }

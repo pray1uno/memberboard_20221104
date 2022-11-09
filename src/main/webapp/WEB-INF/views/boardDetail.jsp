@@ -46,10 +46,30 @@
                 </td>
             </tr>
         </c:if>
+
+        <c:if test="${sessionScope.loginEmail == boardList.boardWriter}">
+            <tr>
+                <th>수정/삭제</th>
+                <td id="buttonForm">
+                    <button onclick="boardUpdate()">수정</button>
+                    <button onclick="boardDelete()">삭제</button>
+                </td>
+            </tr>
+        </c:if>
     </table>
 </div>
 <div>
     <a href="/">홈으로 가기</a>
+    <a href="/board/paging">목록으로</a>
 </div>
 </body>
+<script>
+    const boardUpdate = () => {
+        location.href = "/board/update";
+    }
+
+    const boardDelete = () => {
+        location.href = "/board/delete?id=" + '${boardList.id}';
+    }
+</script>
 </html>

@@ -1,6 +1,7 @@
 package com.its.memberboard.controller;
 
 import com.its.memberboard.DTO.BoardDTO;
+import com.its.memberboard.DTO.MemberDTO;
 import com.its.memberboard.DTO.PageDTO;
 import com.its.memberboard.Service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,15 @@ public class BoardController {
         List<BoardDTO> searchResult = boardService.search(type, q);
         model.addAttribute("boardList", searchResult);
         return "boardPaging";
+    }
+
+
+    @GetMapping("/board/delete")
+    public String boardDelete(@RequestParam("id") Long id,
+                              Model model) {
+        int deleteResult = boardService.boardDelete(id);
+        model.addAttribute("deleteResult", deleteResult);
+        return "redirect:/board/paging";
     }
 
 }
