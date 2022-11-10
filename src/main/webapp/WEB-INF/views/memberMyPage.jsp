@@ -12,16 +12,21 @@
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div>
-    <button onclick="myUpdate()">내 정보 수정</button>
+<div class="container mt-5">
+    <button class="btn btn-primary" onclick="myPageUpdate()">내 정보 수정</button>
 </div>
-<div>
-    <a href="/">홈으로 가기</a>
+<div class="container mt-5">
+    <button class="btn btn-outline-secondary" onclick="backHome()">홈으로 가기</button>
 </div>
 </body>
 <script>
-    const myUpdate = () => {
-        location.href = "/member/myPage";
+    const myPageUpdate = () => {
+        location.href = "/member/toMyPage";
+    }
+
+    const backHome = () => {
+        location.href = "/";
+
     }
 </script>
 </html>

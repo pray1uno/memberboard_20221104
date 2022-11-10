@@ -9,14 +9,24 @@
 <html>
 <head>
     <title>boardUpdate</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <style>
+        #updateWriteForm {
+            width: 800px;
+            height: auto;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
+<div class="container mt-5" id="updateWriteForm">
     <form action="/board/update" method="post" name="updateFn">
-        <input type="hidden" name="id" value="${updateResult.id}" readonly> <br>
-        <input type="text" name="boardTitle" value="${updateResult.boardTitle}"> <br>
-        <input type="text" name="boardWriter" value="${updateResult.boardWriter}" readonly> <br>
-        <textarea name="boardContents" cols="30" rows="10">${updateResult.boardContents}</textarea> <br>
+        <input type="hidden" name="id" class="form-control" value="${updateResult.id}" readonly> <br>
+        <input type="text" name="boardTitle" class="form-control" value="${updateResult.boardTitle}"> <br>
+        <input type="text" name="boardWriter" class="form-control" value="${updateResult.boardWriter}" readonly> <br>
+        <textarea name="boardContents" class="form-control" cols="30" rows="10">${updateResult.boardContents}</textarea>
+        <br>
         <input type="button" value="수정완료" onclick="updateAll()">
     </form>
 </div>

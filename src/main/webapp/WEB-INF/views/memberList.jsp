@@ -10,16 +10,19 @@
 <html>
 <head>
     <title>memberList</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
-<div>
-    <table>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
+<div class="container mt-5">
+    <table class="table table-striped">
         <tr>
             <th>ID</th>
             <th>Email</th>
             <th>Password</th>
             <th>Name</th>
             <th>Mobile</th>
+            <th>Delete</th>
         </tr>
         <c:forEach items="${memberList}" var="list">
             <tr>
@@ -35,13 +38,18 @@
         </c:forEach>
     </table>
 </div>
-<div>
-    <a href="/member/admin">이전으로</a>
+<div class="container">
+    <button class="btn btn-link" onclick="backHome2()">이전으로</button>
 </div>
 </body>
 <script>
     const memberDelete = (clickedId) => {
         location.href = "/member/delete?id=" + clickedId;
+    }
+
+    const backHome2 = () => {
+        location.href = "/member/admin";
+
     }
 </script>
 </html>

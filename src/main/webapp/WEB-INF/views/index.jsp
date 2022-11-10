@@ -9,12 +9,15 @@
 <html>
 <head>
     <title>Index</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<button onclick="memberSave()">회원가입</button>
-<button onclick="memberLogin()">로그인</button>
-<button onclick="boardList()">게시글 목록</button>
+<div class="container">
+    <button class="btn btn-outline-dark" onclick="memberSave()">회원가입</button>
+    <button class="btn btn-outline-dark" onclick="memberLogin()">로그인</button>
+    <button class="btn btn-outline-dark" onclick="boardList()">게시글 목록</button>
+</div>
 </body>
 <script>
     const memberSave = () => {
@@ -24,7 +27,6 @@
     const memberLogin = () => {
         location.href = "/member/login";
     }
-
     const boardList = () => {
         location.href = "/board/paging";
     }

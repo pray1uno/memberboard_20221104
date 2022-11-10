@@ -63,6 +63,11 @@ public class MemberController {
     }
 
     @GetMapping("/member/myPage")
+    public String myPageLook() {
+        return "memberMyPage";
+    }
+
+    @GetMapping("/member/toMyPage")
     public String myPage(Model model, HttpSession session) {
         String loginEmail = (String) session.getAttribute("loginEmail");
         MemberDTO result = memberService.myUpdate(loginEmail);

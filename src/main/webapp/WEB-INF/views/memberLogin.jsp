@@ -9,29 +9,34 @@
 <html>
 <head>
     <title>memberLogin</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <style>
+        #loginForm {
+            width: 500px;
+            height: auto;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div>
+<br>
+<div class="container" id="loginForm">
     <form action="/member/login" method="post" name="loginForm">
-        <input type="text" name="memberEmail" placeholder="이메일" id="emailAdmin"> <br>
-        <input type="text" name="memberPassword" placeholder="비밀번호"> <br>
-        <input type="button" value="로그인" onclick="login()">
+        <label for="idInputForm" class="form-label">이메일</label>
+        <input type="text" id="idInputForm" name="memberEmail" placeholder="이메일" class="form-control mb-3"> <br>
+        <label for="passInputForm" class="form-label">비밀번호</label>
+        <input type="text" id="passInputForm" name="memberPassword" placeholder="비밀번호" class="form-control mb-5"> <br>
+        <div class="btn btn-outline-primary d-grid gap-2 col-6 mx-auto">
+            <input type="button" value="로그인" onclick="login()" class="btn">
+        </div>
     </form>
 </div>
-<div>
-    <a href="/">홈으로 가기</a>
-</div>
+
 </body>
 <script>
     const login = () => {
-
-        if (document.getElementById("emailAdmin").value == "admin") {
-            location.href = "/member/admin";
-            document.loginForm.submit();
-        } else {
         document.loginForm.submit();
-        }
     }
 </script>
 </html>

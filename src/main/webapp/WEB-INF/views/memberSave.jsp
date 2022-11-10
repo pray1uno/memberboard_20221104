@@ -10,33 +10,44 @@
 <head>
     <title>memberSave</title>
     <script src="/resources/js/jquery.js"></script>
+    <style>
+        #saveForm {
+            width: 500px;
+            height: 100px;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div>
+<div class="container" id="saveForm">
     <form action="/member/save" method="post" name="saveForm" enctype="multipart/form-data">
-        이메일 <br>
-        <input type="text" name="memberEmail" placeholder="이메일" onblur="duplicateCheck()" id="inputEmail">
-        <span id="emailCheck"></span><br>
-        <span id="inputEmailCheck"></span>
-        비밀번호 <br>
-        <input type="text" name="memberPassword" placeholder="비밀번호" onblur="expCheckPW()" id="inputPassword">
-        <span id="passwordCheck"></span><br>
-        <span id="passwordExp"></span>
-        이름 <br>
-        <input type="text" name="memberName" placeholder="이름">
-        <span id="nameCheck"></span><br>
-        전화번호 <br>
-        <input type="text" name="memberMobile" placeholder="전화번호" onblur="expCheckMobile()" id="inputMobile">
-        <span id="mobileCheck"></span><br>
-        <span id="mobileExp"></span>
-        <input type="file" name="memberFileName"> <br>
-        <input type="button" value="회원가입" onclick="save()">
+        <label for="inputEmail" class="form-label">이메일</label>
+        <input type="text" name="memberEmail" placeholder="이메일" onblur="duplicateCheck()" id="inputEmail"
+               class="form-control mb-3">
+        <span id="emailCheck"></span> <br>
+        <span id="inputEmailCheck"></span> <br>
+        <label for="inputPassword" class="form-label">비밀번호</label>
+        <input type="text" name="memberPassword" placeholder="비밀번호" onblur="expCheckPW()" id="inputPassword"
+               class="form-control mb-3">
+        <span id="passwordCheck"></span>
+        <span id="passwordExp"></span> <br> <br>
+        <label for="nameCheck" class="form-label">이름</label>
+        <input type="text" name="memberName" placeholder="이름" class="form-control mb-3">
+        <span id="nameCheck"></span> <br> <br>
+        <label for="mobileExp" class="form-label">전화번호</label>
+        <input type="text" name="memberMobile" placeholder="전화번호" onblur="expCheckMobile()" id="inputMobile"
+               class="form-control mb-3">
+        <span id="mobileCheck"></span>
+        <span id="mobileExp"></span> <br> <br>
+        프로필사진
+        <input type="file" name="memberFileName" class="form-control mt-3 mb-5">
     </form>
+    <div class="btn btn-outline-primary d-grid gap-2 col-6 mx-auto">
+        <input type="button" value="회원가입" onclick="save()" class="btn">
+    </div>
 </div>
-<div>
-    <a href="/">홈으로 가기</a>
-</div>
+
 </body>
 <script>
 

@@ -11,9 +11,12 @@
     <title>admin</title>
 </head>
 <body>
-<div>
-    <button onclick="memberList()" >회원목록</button>
-    <button onclick="adminBoardList()">게시글목록</button>
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
+<div class="container mt-5">
+    <button class="btn btn-outline-warning" onclick="memberList()">회원목록</button>
+</div>
+<div class="container mt-5">
+    <button class="btn btn-outline-secondary" onclick="adminBoardList()">게시글목록</button>
 </div>
 </body>
 <script>

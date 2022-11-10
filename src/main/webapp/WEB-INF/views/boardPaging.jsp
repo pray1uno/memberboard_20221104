@@ -11,17 +11,12 @@
 <html>
 <head>
     <title>boardPaging</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div>
-    <button onclick="logout()">로그아웃</button>
-    <button onclick="myPage()">마이페이지</button>
-    <button onclick="newBoardWrite()">신규 게시글 작성</button>
-</div>
-<div>
-<table>
-    <h2>${sessionScope.loginEmail} 님</h2>
+<div class="container mt-5">
+<table class="table table-hover">
     <tr>
         <th>번호</th>
         <th>제목</th>
@@ -44,17 +39,17 @@
 </table>
 </div>
 
-<div>
-    <ul>
+<div class="container">
+    <ul class="pagination justify-content-center">
         <c:choose>
             <c:when test="${paging.page<=1}">
-                <li>
-                    <a>이전</a>
+                <li class="page-item disabled">
+                    <a class="page-link">이전</a>
                 </li>
             </c:when>
             <c:otherwise>
-                <li>
-                    <a href="/board/paging?page=${paging.page-1}">이전</a>
+                <li class="page-item">
+                    <a class="page-link" href="/board/paging?page=${paging.page-1}">이전</a>
                 </li>
             </c:otherwise>
         </c:choose>
@@ -62,13 +57,13 @@
         <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="i" step="1">
             <c:choose>
                 <c:when test="${i eq paging.page}">
-                    <li>
-                        <a>${i}</a>
+                    <li class="active">
+                        <a class="page-link">${i}</a>
                     </li>
                 </c:when>
                 <c:otherwise>
-                    <li>
-                        <a href="/board/paging?page=${i}">${i}</a>
+                    <li class="page-item">
+                        <a class="page-link" href="/board/paging?page=${i}">${i}</a>
                     </li>
                 </c:otherwise>
             </c:choose>
@@ -76,23 +71,28 @@
 
         <c:choose>
             <c:when test="${paging.page>=paging.maxPage}">
-                <li>
-                    <a>다음</a>
+                <li class="page-item disabled">
+                    <a class="page-link">다음</a>
                 </li>
             </c:when>
             <c:otherwise>
-                <li>
-                    <a href="/board/paging?page=${paging.page+1}">다음</a>
+                <li class="page-item">
+                    <a class="page-link" href="/board/paging?page=${paging.page+1}">다음</a>
                 </li>
             </c:otherwise>
         </c:choose>
     </ul>
 </div>
-<div>
-    <a href="/">홈으로 가기</a>
+<div class="container">
+    <button class="btn btn-outline-dark" onclick="newBoardWrite()">글쓰기</button>
 </div>
 </body>
 <script>
+
+    const returnToHome = () => {
+        location.href = "/";
+    }
+
     const logout = () => {
         location.href = "/member/logout";
     }
