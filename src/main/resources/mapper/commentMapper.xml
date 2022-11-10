@@ -15,4 +15,11 @@
         where boardId = #{boardId}
         order by id desc
     </select>
+
+    <select id="commentUpset" parameterType="BoardDTO" resultType="CommentDTO">
+        select *
+        from comment_table1
+        where boardId = #{id}
+        order by id desc
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.its.memberboard.Repository;
 
+import com.its.memberboard.DTO.BoardDTO;
 import com.its.memberboard.DTO.CommentDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,9 @@ public class CommentRepository {
 
     public List<CommentDTO> listLoad(Long boardId) {
         return sql.selectList("Comment.listLoad", boardId);
+    }
+
+    public List<CommentDTO> commentListUpset(BoardDTO boardDTO) {
+        return sql.selectList("Comment.commentUpset", boardDTO);
     }
 }

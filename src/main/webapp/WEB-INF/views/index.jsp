@@ -13,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div class="container">
+<div class="container mt-5">
     <button class="btn btn-outline-dark" onclick="memberSave()">회원가입</button>
     <button class="btn btn-outline-dark" onclick="memberLogin()">로그인</button>
     <button class="btn btn-outline-dark" onclick="boardList()">게시글 목록</button>

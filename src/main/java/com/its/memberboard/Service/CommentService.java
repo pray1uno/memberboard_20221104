@@ -1,5 +1,6 @@
 package com.its.memberboard.Service;
 
+import com.its.memberboard.DTO.BoardDTO;
 import com.its.memberboard.DTO.CommentDTO;
 import com.its.memberboard.Repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,9 @@ public class CommentService {
     public List<CommentDTO> listLoad(Long boardId) {
         System.out.println("boardId = " + boardId);
         return commentRepository.listLoad(boardId);
+    }
+
+    public List<CommentDTO> commentListUpset(BoardDTO boardDTO) {
+        return commentRepository.commentListUpset(boardDTO);
     }
 }

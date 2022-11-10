@@ -99,6 +99,8 @@ public class BoardController {
         boardService.update(boardDTO);
         BoardDTO DTO = boardService.findById(boardDTO.getId());
         model.addAttribute("boardList", DTO);
+        List<CommentDTO> list = commentService.commentListUpset(boardDTO);
+        model.addAttribute("commentList", list);
         return "boardDetail";
     }
 
