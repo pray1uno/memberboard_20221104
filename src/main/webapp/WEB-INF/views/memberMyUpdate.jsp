@@ -34,6 +34,8 @@
 </div>
 </body>
 <script>
+    const checkExpMobileAdmin = /^\d{3}-\d{4}-\d{4}$/;
+    const checkExpPWAdmin = /^(?=.*[a-z])[a-z \d -_!#]/;
 
     const updateForm = () => {
         const passwordDB = '${myPage.memberPassword}';
@@ -42,12 +44,19 @@
         const newPassword = document.getElementById("newPassword").value;
         const realPassword = document.getElementById("realPassword").value;
 
-        if (passwordDB == inputPW && newPassword == realPassword) {
-            document.myUpdate.submit()
-        } else if (passwordDB != inputPW && newPassword == realPassword) {
-            alert("현재 비밀번호를 확인해 주세요.")
-        } else if (passwordDB == inputPW && newPassword != realPassword) {
-            alert("새로운 비밀번호가 일치하지 않습니다.")
+        const test1 = passwordDB == inputPW;
+        const test2 = newPassword == realPassword;
+
+        const test3 = realPassword.match(checkExpPWAdmin)
+
+        if (test1 && test2) {
+            if (test3) {
+                document.myUpdate.submit()
+            } else {
+                alert("영문 소문자는 반드시 작성해야 합니다.")
+            }
+        } else {
+            alert("입력한 내용을 확인하세요!")
         }
     }
 </script>
