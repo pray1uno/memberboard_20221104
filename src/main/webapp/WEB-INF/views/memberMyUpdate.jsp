@@ -27,8 +27,8 @@
         <input type="text" name="" id="updateCheck" class="form-control" placeholder="현재 비밀번호"> <br>
         <input type="text" name="" id="newPassword" class="form-control" placeholder="새로운 비밀번호"> <br>
         <input type="text" name="memberPassword" id="realPassword" class="form-control" placeholder="새로운 비밀번호 확인"> <br>
-        <input type="text" name="memberName" class="form-control" value="${myPage.memberName}"> <br>
-        <input type="text" name="memberMobile" class="form-control" value="${myPage.memberMobile}"> <br>
+        <input type="text" name="memberName" class="form-control" id="nameData" value="${myPage.memberName}"> <br>
+        <input type="text" name="memberMobile" class="form-control" id="mobileData" value="${myPage.memberMobile}"> <br>
         <input type="button" value="수정" onclick="updateForm()">
     </form>
 </div>
@@ -38,6 +38,21 @@
     const checkExpPWAdmin = /^(?=.*[a-z])[a-z \d -_!#]/;
 
     const updateForm = () => {
+        const nameData = document.getElementById("nameData").value;
+
+        if (nameData.length == 0) {
+            alert("이름은 비워둘 수 없습니다!");
+            return false;
+        }
+
+        const mobileData = document.getElementById("mobileData").value;
+        const mobileEXP = mobileData.match(checkExpMobileAdmin);
+
+        if (!mobileEXP) {
+            alert("전화번호를 정확히 입력해 주세요. '-' 도 포함해야 합니다.");
+            return false;
+        }
+
         const passwordDB = '${myPage.memberPassword}';
         const inputPW = document.getElementById("updateCheck").value;
 
@@ -47,17 +62,19 @@
         const test1 = passwordDB == inputPW;
         const test2 = newPassword == realPassword;
 
-        const test3 = realPassword.match(checkExpPWAdmin)
+        const test3 = realPassword.match(checkExpPWAdmin);
 
         if (test1 && test2) {
             if (test3) {
                 document.myUpdate.submit()
             } else {
-                alert("영문 소문자는 반드시 작성해야 합니다.")
+                alert("영문 소문자는 반드시 작성해야 합니다.");
             }
         } else {
-            alert("입력한 내용을 확인하세요!")
+            alert("입력한 내용을 확인하세요!");
         }
+
+
     }
 </script>
 </html>
