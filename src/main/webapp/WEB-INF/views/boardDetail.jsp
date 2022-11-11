@@ -161,18 +161,32 @@
         location.href = "/board/update?id=" + '${boardList.id}';
     }
 
+    <%--const boardDelete = () => {--%>
+    <%--    location.href = "/board/delete?id=" + '${boardList.id}';--%>
+    <%--}--%>
+
     const boardDelete = () => {
-        location.href = "/board/delete?id=" + '${boardList.id}';
+        if (confirm("해당 게시글을 삭제 하시겠습니까?")) {
+            if (true) {
+                document.location.href = "/board/delete?id=" + '${boardList.id}';
+            }
+            alert("삭제 되었습니다.");
+        }
     }
 
     const adminDelete = () => {
-        location.href = "/board/delete?id=" + '${boardList.id}';
-
+        if (confirm("해당 게시글을 삭제 하시겠습니까?")) {
+            if (true) {
+                document.location.href = "/board/delete?id=" + '${boardList.id}';
+            }
+            alert("삭제 되었습니다.");
+        }
     }
 
     const backPaging = () => {
         location.href = "/board/paging";
-
     }
+
+
 </script>
 </html>
