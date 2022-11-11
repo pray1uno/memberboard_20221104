@@ -44,7 +44,13 @@
 </body>
 <script>
     const memberDelete = (clickedId) => {
-        location.href = "/member/delete?id=" + clickedId;
+
+        if (confirm("해당 회원을 삭제하시겠습니까?")) {
+            if (true) {
+                location.href = "/member/delete?id=" + clickedId;
+            }
+            alert("삭제 되었습니다.")
+        }
     }
 
     const backHome2 = () => {

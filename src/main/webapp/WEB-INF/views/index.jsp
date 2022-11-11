@@ -15,8 +15,8 @@
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div class="container mt-5">
-    <button class="btn btn-outline-dark" onclick="memberSave()">회원가입</button>
     <c:if test="${sessionScope.loginEmail == null}">
+        <button class="btn btn-outline-dark" onclick="memberSave()">회원가입</button>
         <button class="btn btn-outline-dark" onclick="memberLogin()">로그인</button>
     </c:if>
     <c:if test="${sessionScope.loginEmail != null}">
