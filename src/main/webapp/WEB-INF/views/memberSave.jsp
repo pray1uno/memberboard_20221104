@@ -25,21 +25,29 @@
         <label for="inputEmail" class="form-label">이메일</label>
         <input type="text" name="memberEmail" placeholder="이메일" onblur="duplicateCheck()" id="inputEmail"
                class="form-control mb-3">
-        <span id="emailCheck"></span> <br>
-        <span id="inputEmailCheck"></span> <br>
+        <div>
+            <span id="emailCheck"></span>
+            <span id="inputEmailCheck"></span> <br> <br>
+        </div>
         <label for="inputPassword" class="form-label">비밀번호</label>
         <input type="text" name="memberPassword" placeholder="비밀번호" onblur="expCheckPW()" id="inputPassword"
                class="form-control mb-3">
-        <span id="passwordCheck"></span>
-        <span id="passwordExp"></span> <br> <br>
+        <div>
+            <span id="passwordCheck"></span>
+            <span id="passwordExp"></span> <br> <br>
+        </div>
         <label for="nameCheck" class="form-label">이름</label>
         <input type="text" name="memberName" placeholder="이름" class="form-control mb-3">
-        <span id="nameCheck"></span> <br> <br>
+        <div>
+            <span id="nameCheck"></span> <br> <br>
+        </div>
         <label for="mobileExp" class="form-label">전화번호</label>
         <input type="text" name="memberMobile" placeholder="전화번호" onblur="expCheckMobile()" id="inputMobile"
                class="form-control mb-3">
-        <span id="mobileCheck"></span>
-        <span id="mobileExp"></span> <br> <br>
+        <div>
+            <span id="mobileCheck"></span>
+            <span id="mobileExp"></span> <br> <br>
+        </div>
         프로필사진
         <input type="file" name="memberFileName" class="form-control mt-3 mb-5">
     </form>
@@ -50,9 +58,10 @@
 
 </body>
 <script>
+    const checkExpMobile = /^\d{3}-\d{4}-\d{4}$/;
+    const checkExpPW = /^(?=.*[a-z])[a-z \d -_!#]/;
 
     const expCheckMobile = () => {
-        const checkExpMobile = /^\d{3}-\d{4}-\d{4}$/;
 
         const inputMobile = document.getElementById("inputMobile").value;
         const expMobile = document.getElementById("mobileExp");
@@ -68,8 +77,6 @@
     }
 
     const expCheckPW = () => {
-        const checkExpPW = /^(?=.*[a-z])[a-z \d -_!#]/;
-
         const inputExpPW = document.getElementById("inputPassword").value;
         const expPassword = document.getElementById("passwordExp");
 
@@ -109,6 +116,9 @@
                     console.log("실패");
                 }
             });
+        } else if (email.length == 0) {
+            checked.innerHTML = "이메일을 입력해 주세요.";
+            checked.style.color = "red";
         } else {
             checked.innerHTML = "";
         }
@@ -117,45 +127,35 @@
 
     const save = () => {
         const emailCheck = document.getElementById("inputEmailCheck");
-        const passwordCheck = document.getElementById("passwordCheck");
-        const nameCheck = document.getElementById("nameCheck");
-        const mobileCheck = document.getElementById("mobileCheck");
+        const passwordCheck = document.getElementById("inputPassword").value;
+        const mobileCheck = document.getElementById("inputMobile").value;
 
         if (document.saveForm.memberEmail.value == "") {
-            emailCheck.innerHTML = "이메일을 입력해 주세요.";
-            emailCheck.style.color = "red";
+            alert("이메일은 비워둘 수 없습니다!");
             return false;
-        } else {
-            emailCheck.innerHTML = "";
-
         }
 
         if (document.saveForm.memberPassword.value == "") {
-            passwordCheck.innerHTML = "비밀번호를 입력해 주세요.";
-            passwordCheck.style.color = "red";
+            alert("비밀번호는 비워둘 수 없습니다!");
             return false;
-        } else {
-            passwordCheck.innerHTML = "";
         }
 
         if (document.saveForm.memberName.value == "") {
-            nameCheck.innerHTML = "이름을 입력해 주세요.";
-            nameCheck.style.color = "red";
+            alert("이름은 비워둘 수 없습니다!");
             return false;
-        } else {
-            nameCheck.innerHTML = "";
         }
 
         if (document.saveForm.memberMobile.value == "") {
-            mobileCheck.innerHTML = "전화번호를 입력해 주세요.";
-            mobileCheck.style.color = "red";
+            alert("전화번호는 비워둘 수 없습니다!")
             return false;
-        } else {
-            mobileCheck.innerHTML = "";
         }
 
-        document.saveForm.submit();
-
+        if (passwordCheck.match(checkExpPW) && mobileCheck.match(checkExpMobile)) {
+            document.saveForm.submit()
+        } else {
+            alert("가입정보를 확인하세요!")
+            return false;
+        }
     }
 </script>
 </html>
