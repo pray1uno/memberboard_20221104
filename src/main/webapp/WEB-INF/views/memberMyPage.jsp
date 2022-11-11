@@ -9,13 +9,18 @@
 <html>
 <head>
     <title>MyPage</title>
+    <style>
+        #myPage1, #myPage2 {
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div class="container mt-5">
+<div class="container mt-5" id="myPage1">
     <button class="btn btn-primary" onclick="myPageUpdate()">내 정보 수정</button>
 </div>
-<div class="container mt-5">
+<div class="container mt-5" id="myPage2">
     <button class="btn btn-outline-secondary" onclick="backHome()">홈으로 가기</button>
 </div>
 </body>

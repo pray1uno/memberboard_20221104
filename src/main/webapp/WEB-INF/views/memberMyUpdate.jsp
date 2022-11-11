@@ -29,7 +29,7 @@
         <input type="text" name="memberPassword" id="realPassword" class="form-control" placeholder="새로운 비밀번호 확인"> <br>
         <input type="text" name="memberName" class="form-control" id="nameData" value="${myPage.memberName}"> <br>
         <input type="text" name="memberMobile" class="form-control" id="mobileData" value="${myPage.memberMobile}"> <br>
-        <input type="button" value="수정" onclick="updateForm()">
+        <input type="button" value="수정" class="btn btn-outline-primary" onclick="updateForm()">
     </form>
 </div>
 </body>

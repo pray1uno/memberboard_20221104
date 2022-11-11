@@ -11,10 +11,15 @@
 <head>
     <title>Index</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <style>
+        #home {
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div class="container mt-5">
+<div class="container mt-5" id="home">
     <c:if test="${sessionScope.loginEmail == null}">
         <button class="btn btn-outline-dark" onclick="memberSave()">회원가입</button>
         <button class="btn btn-outline-dark" onclick="memberLogin()">로그인</button>

@@ -82,10 +82,10 @@
             </div>
             <div class="container">
                 <textarea name="commentContents" id="commentContents" cols="10" rows="5"
-                          class="form-control"></textarea>
+                          class="form-control" onclick="commentNewSave()"></textarea>
             </div>
             <div class="container mt-3">
-                <button onclick="commentWrites()" class="btn btn-info">댓글작성</button>
+                <button class="btn btn-info" onclick="commentNewWrites()">작성</button>
                 <button onclick="backPaging()" class="btn btn-outline-info">목록으로</button>
             </div>
         </div>
@@ -112,13 +112,23 @@
     </table>
 </div>
 </body>
+
 <script>
 
-    const commentWrites = () => {
+    const commentNewWrites = () => {
+
+        <c:if test="${sessionScope.loginEmail == null}">
+        if (confirm("회원만 작성할 수 있습니다. 회원가입을 진행 하시겠습니까?")) {
+            if (true) {
+                document.location.href = "/member/save";
+            }
+        }
+        </c:if>
+
+        <c:if test="${sessionScope.loginEmail != null}">
         const commentId = '${boardList.id}';
         const writer = document.getElementById("commentWriter").value;
         const contents = document.getElementById("commentContents").value;
-
         $.ajax({
             type: "post",
             url: "/comment/save",
@@ -155,6 +165,8 @@
                 console.log("실패")
             }
         });
+        </c:if>
+
     }
 
     const boardUpdate = () => {
@@ -168,7 +180,7 @@
     const boardDelete = () => {
         if (confirm("해당 게시글을 삭제 하시겠습니까?")) {
             if (true) {
-                document.location.href = "/board/delete?id=" + '${boardList.id}';
+            document.location.href = "/board/delete?id=" + '${boardList.id}';
             }
             alert("삭제 되었습니다.");
         }
@@ -177,7 +189,7 @@
     const adminDelete = () => {
         if (confirm("해당 게시글을 삭제 하시겠습니까?")) {
             if (true) {
-                document.location.href = "/board/delete?id=" + '${boardList.id}';
+            document.location.href = "/board/delete?id=" + '${boardList.id}';
             }
             alert("삭제 되었습니다.");
         }
@@ -187,6 +199,15 @@
         location.href = "/board/paging";
     }
 
+    const commentNewSave = () => {
+        <c:if test="${sessionScope.loginEmail == null}">
+        if (confirm("회원만 작성할 수 있습니다. 회원가입을 진행 하시겠습니까?")) {
+            if (true) {
+            document.location.href = "/member/save";
+            }
+        }
+        </c:if>
+    }
 
 </script>
 </html>

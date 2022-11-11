@@ -9,13 +9,18 @@
 <html>
 <head>
     <title>admin</title>
+    <style>
+        #admin1, #admin2 {
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
-<div class="container mt-5">
+<div class="container mt-5" id="admin1">
     <button class="btn btn-outline-warning" onclick="memberList()">회원목록</button>
 </div>
-<div class="container mt-5">
+<div class="container mt-5" id="admin2">
     <button class="btn btn-outline-secondary" onclick="adminBoardList()">게시글목록</button>
 </div>
 </body>
