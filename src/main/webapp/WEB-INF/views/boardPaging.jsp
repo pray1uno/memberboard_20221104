@@ -16,27 +16,27 @@
 <body>
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div class="container mt-5">
-<table class="table table-hover">
-    <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성시간</th>
-        <th>조회수</th>
-    </tr>
-    <c:forEach items="${boardList}" var="board">
+    <table class="table table-hover">
         <tr>
-            <td>${board.id}</td>
-            <td>
-                <a href="/board?id=${board.id}&page${paging.page}">${board.boardTitle}</a></td>
-            <td>${board.boardWriter}</td>
-            <td>
-                <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
-            </td>
-            <td>${board.boardHits}</td>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성시간</th>
+            <th>조회수</th>
         </tr>
-    </c:forEach>
-</table>
+        <c:forEach items="${boardList}" var="board">
+            <tr>
+                <td>${board.id}</td>
+                <td>
+                    <a href="/board?id=${board.id}&page${paging.page}">${board.boardTitle}</a></td>
+                <td>${board.boardWriter}</td>
+                <td>
+                    <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                </td>
+                <td>${board.boardHits}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 
 <div class="container">
@@ -84,7 +84,9 @@
     </ul>
 </div>
 <div class="container">
-    <button class="btn btn-outline-dark" onclick="newBoardWrite()">글쓰기</button>
+    <c:if test="${sessionScope.loginEmail != null}">
+        <button class="btn btn-outline-dark" onclick="newBoardWrite()">글쓰기</button>
+    </c:if>
 </div>
 </body>
 <script>

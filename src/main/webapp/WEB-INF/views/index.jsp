@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -15,7 +16,9 @@
 <jsp:include page="layout/header.jsp" flush="false"></jsp:include>
 <div class="container mt-5">
     <button class="btn btn-outline-dark" onclick="memberSave()">회원가입</button>
-    <button class="btn btn-outline-dark" onclick="memberLogin()">로그인</button>
+    <c:if test="${sessionScope.loginEmail == null}">
+        <button class="btn btn-outline-dark" onclick="memberLogin()">로그인</button>
+    </c:if>
     <button class="btn btn-outline-dark" onclick="boardList()">게시글 목록</button>
 </div>
 </body>
@@ -30,5 +33,6 @@
     const boardList = () => {
         location.href = "/board/paging";
     }
+
 </script>
 </html>
