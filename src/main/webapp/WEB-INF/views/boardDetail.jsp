@@ -58,8 +58,8 @@
             <tr>
                 <th>수정/삭제</th>
                 <td id="buttonForm">
-                    <button onclick="boardUpdate()">수정</button>
-                    <button onclick="boardDelete()">삭제</button>
+                    <button class="btn btn-outline-warning" onclick="boardUpdate()">수정</button>
+                    <button class="btn btn-outline-danger" onclick="boardDelete()">삭제</button>
                 </td>
             </tr>
         </c:if>
@@ -68,11 +68,10 @@
             <tr>
                 <th>삭제</th>
                 <td>
-                    <button onclick="adminDelete()">삭제</button>
+                    <button class="btn btn-outline-danger" onclick="adminDelete()">삭제</button>
                 </td>
             </tr>
         </c:if>
-
     </table>
 
     <div class="container mt-5">

@@ -19,6 +19,9 @@
     <c:if test="${sessionScope.loginEmail == null}">
         <button class="btn btn-outline-dark" onclick="memberLogin()">로그인</button>
     </c:if>
+    <c:if test="${sessionScope.loginEmail != null}">
+        <button class="btn btn-outline-dark" onclick="homeLogout()">로그아웃</button>
+    </c:if>
     <button class="btn btn-outline-dark" onclick="boardList()">게시글 목록</button>
 </div>
 </body>
@@ -34,5 +37,9 @@
         location.href = "/board/paging";
     }
 
+    const homeLogout = () => {
+        location.href = "/member/logout";
+
+    }
 </script>
 </html>

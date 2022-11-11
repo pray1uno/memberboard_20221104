@@ -56,7 +56,7 @@
                     </c:when>
                     <c:otherwise>
                         <button type="button" onclick="headerLogin()" class="btn btn-outline-light me-2">Login</button>
-                        <button type="button" class="btn btn-warning">Sign-up</button>
+                        <button type="button" onclick="headerSignUp()" class="btn btn-warning">Sign-up</button>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -66,11 +66,15 @@
 </body>
 <script>
     const headerLogout = () => {
-        location.href = "/member/logout"
+        location.href = "/member/logout";
     }
 
     const headerLogin = () => {
-        location.href = "/member/login"
+        location.href = "/member/login";
+    }
+
+    const headerSignUp = () => {
+        location.href = "/member/save";
 
     }
 </script>

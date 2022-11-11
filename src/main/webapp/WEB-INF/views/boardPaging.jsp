@@ -41,6 +41,20 @@
 
 <div class="container">
     <ul class="pagination justify-content-center">
+
+        <c:choose>
+            <c:when test="${paging.page == 1}">
+                <li class="page-item disabled">
+                    <a class="page-link">＜</a>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li class="page-item">
+                    <a class="page-link" href="/board/paging">＜</a>
+                </li>
+            </c:otherwise>
+        </c:choose>
+
         <c:choose>
             <c:when test="${paging.page<=1}">
                 <li class="page-item disabled">
@@ -78,6 +92,19 @@
             <c:otherwise>
                 <li class="page-item">
                     <a class="page-link" href="/board/paging?page=${paging.page+1}">다음</a>
+                </li>
+            </c:otherwise>
+        </c:choose>
+
+        <c:choose>
+            <c:when test="${paging.page>=paging.maxPage}">
+                <li class="page-item disabled">
+                    <a class="page-link">＞</a>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li class="page-item">
+                    <a class="page-link" href="/board/paging?page=${paging.maxPage}">＞</a>
                 </li>
             </c:otherwise>
         </c:choose>
