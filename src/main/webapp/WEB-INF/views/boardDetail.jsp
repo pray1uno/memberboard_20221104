@@ -180,7 +180,7 @@
     const boardDelete = () => {
         if (confirm("해당 게시글을 삭제 하시겠습니까?")) {
             if (true) {
-            document.location.href = "/board/delete?id=" + '${boardList.id}';
+                document.location.href = "/board/delete?id=" + '${boardList.id}';
             }
             alert("삭제 되었습니다.");
         }
@@ -189,7 +189,7 @@
     const adminDelete = () => {
         if (confirm("해당 게시글을 삭제 하시겠습니까?")) {
             if (true) {
-            document.location.href = "/board/delete?id=" + '${boardList.id}';
+                document.location.href = "/board/delete?id=" + '${boardList.id}';
             }
             alert("삭제 되었습니다.");
         }
@@ -203,7 +203,7 @@
         <c:if test="${sessionScope.loginEmail == null}">
         if (confirm("회원만 작성할 수 있습니다. 회원가입을 진행 하시겠습니까?")) {
             if (true) {
-            document.location.href = "/member/save";
+                document.location.href = "/member/save";
             }
         }
         </c:if>

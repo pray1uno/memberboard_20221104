@@ -24,8 +24,8 @@ public class MemberController {
     @PostMapping("/member/save")
     public String postSave(@ModelAttribute MemberDTO memberDTO) throws IOException {
         try {
-        memberService.save(memberDTO);
-        return "index";
+            memberService.save(memberDTO);
+            return "index";
         } catch (Exception e) {
             return "memberSave";
         }

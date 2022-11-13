@@ -17,6 +17,7 @@ public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+
     public void save(MemberDTO memberDTO) throws IOException {
 
         if (!memberDTO.getMemberFileName().isEmpty()) {
@@ -66,7 +67,7 @@ public class MemberService {
 
         if (updateResult > 0) {
             return true;
-        } else  {
+        } else {
             return false;
         }
     }

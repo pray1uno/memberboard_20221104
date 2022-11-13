@@ -26,10 +26,10 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-white">홈</a></li>
                 <c:if test="${sessionScope.loginEmail != null}">
-                <li><a href="/member/myPage" class="nav-link px-2 text-white">마이페이지</a></li>
+                    <li><a href="/member/myPage" class="nav-link px-2 text-white">마이페이지</a></li>
                 </c:if>
                 <c:if test="${sessionScope.loginEmail == 'admin'}">
-                <li><a href="/member/admin" class="nav-link px-2 text-white">회원관리</a></li>
+                    <li><a href="/member/admin" class="nav-link px-2 text-white">회원관리</a></li>
                 </c:if>
                 <%--                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>--%>
                 <%--                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>--%>
@@ -42,7 +42,8 @@
                         <option value="boardTitle" selected>제목</option>
                         <option value="boardWriter">작성자</option>
                     </select>
-                    <input type="search" name="q" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+                    <input type="search" name="q" class="form-control form-control-dark text-bg-dark"
+                           placeholder="Search..."
                            aria-label="Search">
                     <button class="btn btn-outline-light"><i class="bi bi-search"></i></button>
                 </div>
@@ -52,7 +53,8 @@
                 <c:choose>
                     <c:when test="${sessionScope.loginEmail != null}">
                         <span>${sessionScope.loginEmail}님</span>
-                        <button type="button" onclick="headerLogout()" class="btn btn-outline-light me-2">Logout</button>
+                        <button type="button" onclick="headerLogout()" class="btn btn-outline-light me-2">Logout
+                        </button>
                     </c:when>
                     <c:otherwise>
                         <button type="button" onclick="headerLogin()" class="btn btn-outline-light me-2">Login</button>

@@ -11,6 +11,7 @@ import java.util.List;
 public class MemberRepository {
     @Autowired
     private SqlSessionTemplate sql;
+
     public MemberDTO save(MemberDTO memberDTO) {
         sql.insert("Member.memberSave", memberDTO);
         return memberDTO;
@@ -18,7 +19,7 @@ public class MemberRepository {
 
     public void fileSave(MemberDTO memberDTO) {
         sql.insert("Member.fileSave", memberDTO);
-     }
+    }
 
     public String duplicate(String memberEmail) {
         return sql.selectOne("Member.duplicateCheck", memberEmail);
